@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Profile | FabricVision{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="auth-card center-card">
+      <h1>Your profile</h1>
+      <p class="subtitle">
+        Manage your FabricVision account and track your credits.
+      </p>
+      {% if profile %}
+        <div class="profile-grid">
+          <div class="profile-card">
+            <h3>Account</h3>
+            <p>{{ profile.account_type|title }}</p>
+          </div>
+          <div class="profile-card">
+            <h3>Credits remaining</h3>
+            <p>{{ profile.credits_remaining }}</p>
+          </div>
+          <div class="profile-card">
+            <h3>Username</h3>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="profile-card">
+            <h3>Email</h3>
+            <p>{{ user.email }}</p>
+          </div>
+        </div>
+      {% else %}
+        <p>Profile data not available.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
