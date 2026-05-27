@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Register | FabricVision{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="subtitle">
+        Join FabricVision to unlock personalized virtual try-ons.
+      </p>
+      <form class="form" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="form-errors">{{ form.non_field_errors }}</div>
+        {% endif %}
+        {{ form.as_p }}
+        <button class="btn-primary" type="submit">Create account</button>
+      </form>
+      <div class="helper-links">
+        <span>
+          Already have an account? <a href="/accounts/login/">Log in</a>
+        </span>
+      </div>
+    </div>
+    <div class="info-panel">
+      <h2>Built for customers and boutiques</h2>
+      <p>
+        Choose your account type during registration to match your workflow.
+      </p>
+      <ul>
+        <li>Customers receive free credits on signup</li>
+        <li>Shop accounts unlock catalog tools</li>
+        <li>Secure, session-based authentication</li>
+      </ul>
+    </div>
+  </section>
+{% endblock %}

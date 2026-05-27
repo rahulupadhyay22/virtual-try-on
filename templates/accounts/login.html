@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Login | FabricVision{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="subtitle">
+        Sign in to continue your FabricVision experience.
+      </p>
+      <form class="form" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="form-errors">{{ form.non_field_errors }}</div>
+        {% endif %}
+        {{ form.as_p }}
+        {% if next %}
+          <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <button class="btn-primary" type="submit">Login</button>
+      </form>
+      <div class="helper-links">
+        <a href="/accounts/password-reset/">Forgot your password?</a>
+        <span>
+          New here? <a href="/accounts/register/">Create an account</a>
+        </span>
+      </div>
+    </div>
+    <div class="info-panel">
+      <h2>Instant try-ons, premium results</h2>
+      <p>
+        FabricVision blends AI precision with tailored style guidance so you can
+        see how any fabric looks before you buy.
+      </p>
+      <ul>
+        <li>Private and secure image handling</li>
+        <li>Fast generation with realistic draping</li>
+        <li>Track credits and history in one place</li>
+      </ul>
+    </div>
+  </section>
+{% endblock %}
